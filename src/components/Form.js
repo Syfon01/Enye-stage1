@@ -52,7 +52,7 @@ import UserTable from './Table';
   
       return (
         <div className="container bg-light py-5">
-          <div  className="col-md-8 mx-auto border py-5">
+          <div  className="col-md-6 mx-auto border py-5">
             <h2 className="register-title">Registration</h2>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <div className="form-row">
