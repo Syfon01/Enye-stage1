@@ -96,7 +96,7 @@ class UserTable extends React.Component {
         ...this.getColumnSearchProps('hobby'),
       },
     ];
-    return <div className="main-form">
+    return <div className="main-form text-center">
     <h2 className="register-title">Users Record</h2>
     <Table columns={columns} dataSource={this.props.data} />
     </div>;
