@@ -44,31 +44,15 @@ import UserTable from './Table';
       const { getFieldDecorator } = this.props.form;
   
       const formItemLayout = {
-        labelCol: {
-          xs: { span: 16 },
-          sm: { span: 4},
-        },
-        wrapperCol: {
-          xs: { span: 24 },
-          sm: { span: 18 },
-        },
+        
       };
       const tailFormItemLayout = {
-        wrapperCol: {
-          xs: {
-            span: 24,
-            offset: 0,
-          },
-          sm: {
-            span: 16,
-            offset: 11
-          },
-        },
+        
       };
   
       return (
         <div className="container bg-light py-5">
-          <div  className="col-md-6 mx-auto border py-5">
+          <div  className="col-md-8 mx-auto border py-5">
             <h2 className="register-title">Registration</h2>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <div className="form-row">
