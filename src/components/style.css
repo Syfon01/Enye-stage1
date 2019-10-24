@@ -8,7 +8,7 @@
 }
 
 .ant-calendar-picker {
-    width: 100%;
+    width: 100%
 }
 .register-title {
     text-align: center;
@@ -20,7 +20,7 @@
 }
 
 .ant-table-column-has-actions {
-    color: #fff !important;
+    color: #000 !important;
     font-weight: bold;
 }
 
