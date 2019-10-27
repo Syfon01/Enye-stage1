@@ -5,43 +5,41 @@ import {
     Button,
   } from 'antd';
 
+  import {useSelector , useDispatch} from 'react-redux';
 import React from 'react';
-
+import { formCreate } from '../redux/action';
 import UserTable from './Table';
 
 // import './styles.css';
   
-  class RegistrationForm extends React.Component {
-    constructor(props) {
-      super(props);
-    this.state = {
-     userData: []
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
-    handleSubmit = e => {
+  const RegistrationForm = (props) => {
+    const {
+      formData
+    } = useSelector(state => ({
+      ...state.formReducer
+    }));
+
+       const dispatch = useDispatch();
+
+    const handleSubmit = e => {
+      
       e.preventDefault();
       let users;
-      this.props.form.validateFieldsAndScroll((err, values) => {
+      props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
-          if(this.state.userData.length !== 0){
-            values.key = parseInt(this.state.userData.length) + 1;
-            users = [ ...this.state.userData, values ]
+          if(formData.length !== 0){
+            values.key = parseInt(formData.length) + 1;
+            users = [ ...formData, values ]
           } else {
             values.key = 1;
-            users = [ ...this.state.userData, values ]
+            users = [ ...formData, values ]
           }
-          this.setState({
-            userData: users
-          })
+          dispatch(formCreate(users)) 
         }
       });
     };
 
-  
-    render() {
-      const { getFieldDecorator } = this.props.form;
+      const { getFieldDecorator } = props.form;
   
       const formItemLayout = {
         
@@ -54,7 +52,7 @@ import UserTable from './Table';
         <div className="container bg-light py-5">
           <div  className="col-md-6 mx-auto border py-5">
             <h2 className="register-title">Registration</h2>
-            <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+            <Form {...formItemLayout} onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="col">
               <Form.Item label="First Name">
@@ -153,10 +151,9 @@ import UserTable from './Table';
               </Form.Item>
             </Form>
           </div>
-          <UserTable data={this.state.userData} />
+          <UserTable data={formData} />
         </div>
       );
-    }
   }
 
   const UserForm = Form.create({ name: 'register' })(RegistrationForm);
